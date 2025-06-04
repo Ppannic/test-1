@@ -1,0 +1,86 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f7fb;
+  color: #333;
+}
+
+.container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+h1, h2 {
+  margin-bottom: 16px;
+  color: #2c3e50;
+}
+
+input[type="text"],
+input[type="password"] {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 100%;
+  margin-bottom: 12px;
+  box-sizing: border-box;
+}
+
+button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  margin: 6px 4px 12px 0;
+}
+
+button.primary {
+  background-color: #3498db;
+  color: white;
+}
+
+button.primary:hover {
+  background-color: #2980b9;
+}
+
+button.danger {
+  background-color: #e74c3c;
+  color: white;
+}
+
+button.danger:hover {
+  background-color: #c0392b;
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.task-item input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+.task-completed {
+  text-decoration: line-through;
+  color: #aaa;
+}
+
+.group {
+  margin-bottom: 24px;
+}
+
+.filters {
+  margin: 16px 0;
+}
+
+.filters button {
+  background: #ecf0f1;
+  color:
