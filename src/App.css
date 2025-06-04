@@ -78,11 +78,17 @@ button.danger:hover {
   margin-bottom: 24px;
 }
 
-.filters {
-  margin: 16px 0;
+.filters button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  font-weight: bold;
+  margin-right: 8px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  transition: background 0.2s;
 }
 
-.filters button {
-  background: #ecf0f1;
-  color: white;
+.filters button:hover {
+  background-color: #2980b9;
 }
