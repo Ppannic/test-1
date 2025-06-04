@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f4f7fb;
   color: #333;
 }
@@ -11,10 +11,11 @@ body {
   padding: 30px;
   background: #fff;
   border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
-h1, h2 {
+h1,
+h2 {
   margin-bottom: 16px;
   color: #2c3e50;
 }
@@ -83,4 +84,5 @@ button.danger:hover {
 
 .filters button {
   background: #ecf0f1;
-  color:
+  color: white;
+}
