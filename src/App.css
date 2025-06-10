@@ -1,94 +1,397 @@
-body {
-  margin: 0;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f4f7fb;
-  color: #333;
-}
-
-.container {
-  max-width: 600px;
-  margin: 40px auto;
-  padding: 30px;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-}
-
-h1,
-h2 {
-  margin-bottom: 16px;
-  color: #2c3e50;
-}
-
-input[type="text"],
-input[type="password"] {
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  width: 100%;
-  margin-bottom: 12px;
+* {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", "Arial", sans-serif;
+  background-color: #f7f9fc;
+  color: #333;
+  line-height: 1.6;
 }
 
 button {
-  padding: 10px 16px;
-  border: none;
-  border-radius: 6px;
+  all: unset;
   cursor: pointer;
-  font-weight: bold;
-  margin: 6px 4px 12px 0;
+  font-weight: 600;
+  text-align: center;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
 button.primary {
-  background-color: #3498db;
+  background-color: #4a90e2;
   color: white;
+  box-shadow: 0 6px 12px rgba(74, 144, 226, 0.4);
 }
 
 button.primary:hover {
-  background-color: #2980b9;
+  background-color: #357abd;
+  box-shadow: 0 8px 16px rgba(53, 122, 189, 0.6);
+}
+
+button.cancel {
+  background-color: #ccc;
+  color: #333;
+}
+
+button.cancel:hover {
+  background-color: #999;
 }
 
 button.danger {
-  background-color: #e74c3c;
+  background-color: #e03e3e;
   color: white;
 }
 
 button.danger:hover {
-  background-color: #c0392b;
+  background-color: #b63131;
+}
+
+/* Dashboard layout */
+.dashboard {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 220px;
+  background-color: #20232a;
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sidebar h2 {
+  font-size: 1.4rem;
+}
+
+.sidebar nav a {
+  display: block;
+  color: #ccc;
+  text-decoration: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: 0.3s;
+  margin-bottom: 1rem;
+}
+
+.sidebar nav a.active,
+.sidebar nav a:hover {
+  background-color: #4a90e2;
+  color: white;
+}
+
+.logout-btn {
+  margin-top: auto;
+  background-color: #e03e3e;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.logout-btn:hover {
+  background-color: #b63131;
+}
+
+/* Main Content */
+.main-content {
+  flex-grow: 1;
+  background-color: white;
+  padding: 30px 40px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.header h1 {
+  font-size: 2rem;
+  color: #20232a;
+}
+
+/* Add Task Section */
+.todo-input-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.todo-input-section input[type="text"],
+.todo-input-section textarea {
+  width: 100%;
+  padding: 14px 18px;
+  border-radius: 10px;
+  border: 1.5px solid #ccc;
+  font-size: 16px;
+  resize: vertical;
+  transition: 0.3s;
+}
+
+.todo-input-section input[type="text"]:focus,
+.todo-input-section textarea:focus {
+  border-color: #4a90e2;
+  background-color: #f0f5ff;
+  outline: none;
+}
+
+/* Task List */
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .task-item {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 6px 0;
-  border-bottom: 1px solid #eee;
+  align-items: flex-start;
+  padding: 14px 20px;
+  border-radius: 12px;
+  border: 1.5px solid #ddd;
+  background-color: #fafafa;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  gap: 10px;
 }
 
-.task-item input[type="checkbox"] {
-  margin-right: 8px;
+.task-left {
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+  flex-grow: 1;
+}
+
+.task-left input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  accent-color: #4a90e2;
+  margin-top: 4px;
 }
 
 .task-completed {
   text-decoration: line-through;
-  color: #aaa;
+  color: #999;
 }
 
-.group {
-  margin-bottom: 24px;
+.task-left > div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
-.filters button {
-  background-color: #3498db;
-  color: white;
-  border: none;
-  font-weight: bold;
-  margin-right: 8px;
+.task-description {
+  color: #666;
+  font-style: italic;
+  font-size: 14px;
+  margin-left: 4px;
+}
+
+.task-buttons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.task-edit {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-grow: 1;
+}
+
+.task-edit input[type="text"],
+.task-edit textarea {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1.5px solid #4a90e2;
+  font-size: 16px;
+  background-color: #f0f5ff;
+}
+
+.task-edit input[type="text"]:focus,
+.task-edit textarea:focus {
+  border-color: #357abd;
+  outline: none;
+}
+
+.pagination-btn {
   padding: 8px 14px;
   border-radius: 6px;
-  transition: background 0.2s;
+  cursor: pointer;
+  border: none;
+  background-color: #eee;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.filters button:hover {
-  background-color: #2980b9;
+.pagination-btn:hover:not(:disabled) {
+  background-color: #2196f3; /* สีฟ้า */
+  color: white;
+}
+
+.pagination-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.hamburger-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 28px;
+  height: 22px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 1rem;
+  z-index: 1100; /* ให้ขึ้นมาด้านบน */
+}
+
+/* เส้นสามขีดของ hamburger */
+.hamburger-btn .bar {
+  width: 100%;
+  height: 3px;
+  background-color: #333; /* หรือสีที่คุณใช้ในเมนู */
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* เมื่อเปิดเมนู - แปลง hamburger เป็นกากบาท */
+.hamburger-btn .bar.open:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger-btn .bar.open:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-btn .bar.open:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* ปรับ sidebar ให้เลื่อนซ่อนได้ในจอเล็ก */
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 250px; /* ขนาดตามเดิม */
+    background-color: #222; /* ตาม CSS คุณ */
+    padding: 1rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+  }
+
+  /* เมื่อเปิดเมนู ให้ sidebar เลื่อนมาโชว์ */
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  /* ปุ่ม hamburger แสดงในมือถือ */
+  .hamburger-btn {
+    display: flex;
+  }
+
+  /* main-content ให้เต็มจอ ไม่มี margin ซ้าย */
+  .main-content {
+    margin-left: 0 !important;
+  }
+}
+
+/* ในหน้าจอใหญ่ (เกิน 768px) ให้ sidebar แสดงปกติ */
+@media (min-width: 769px) {
+  .sidebar {
+    position: static;
+    transform: translateX(0);
+  }
+
+  .main-content {
+    margin-left: 250px; /* ตามเดิม */
+  }
+
+  .hamburger-btn {
+    display: none;
+  }
+}
+/* Login Container */
+.login-container {
+  background: white;
+  padding: 40px;
+  border-radius: 14px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  width: 360px;
+  margin: 100px auto;
+  text-align: center;
+  animation: fadeIn 0.6s ease forwards;
+}
+
+.login-container h1 {
+  margin-bottom: 28px;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #2f3e66;
+}
+
+.login-container form input[type="text"],
+.login-container form input[type="password"] {
+  width: 100%;
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  border: 1.8px solid #ddd;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  transition: 0.3s;
+}
+
+.login-container form input[type="text"]:focus,
+.login-container form input[type="password"]:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 6px rgba(74, 144, 226, 0.6);
+  background-color: #f0f5ff;
+  outline: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dashboard {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 12px;
+  }
+
+  .main-content {
+    padding: 20px 16px;
+  }
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
