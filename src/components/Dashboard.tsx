@@ -23,7 +23,6 @@ const Dashboard: React.FC<{ onLogout: () => void }> = ({ onLogout }) => {
   const [pageIncomplete, setPageIncomplete] = useState(1);
   const [pageCompleted, setPageCompleted] = useState(1);
 
-  // ** เพิ่ม state สำหรับเปิด/ปิดเมนู hamburger **
   const [menuOpen, setMenuOpen] = useState(false);
 
   const addTask = () => {
@@ -116,19 +115,16 @@ const Dashboard: React.FC<{ onLogout: () => void }> = ({ onLogout }) => {
   return (
     <Router>
       <div className="dashboard">
-        {/* Hamburger button สำหรับหน้าจอเล็ก */}
         <button 
           className="hamburger-btn" 
           onClick={() => setMenuOpen(!menuOpen)} 
           aria-label="Toggle menu"
         >
-          {/* สามขีด Hamburger icon */}
           <div className={`bar ${menuOpen ? 'open' : ''}`}></div>
           <div className={`bar ${menuOpen ? 'open' : ''}`}></div>
           <div className={`bar ${menuOpen ? 'open' : ''}`}></div>
         </button>
 
-        {/* Sidebar */}
         <aside className={`sidebar ${menuOpen ? 'open' : ''}`}>
           <h2>Todo Dashboard</h2>
           <nav>
@@ -140,7 +136,6 @@ const Dashboard: React.FC<{ onLogout: () => void }> = ({ onLogout }) => {
           </nav>
         </aside>
 
-        {/* Main Content */}
         <main className="main-content" onClick={() => menuOpen && setMenuOpen(false)}>
           <header className="header">
             <h1>Your Tasks</h1>

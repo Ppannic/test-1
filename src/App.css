@@ -52,10 +52,11 @@ button.danger:hover {
   background-color: #b63131;
 }
 
-/* Dashboard layout */
 .dashboard {
   display: flex;
   height: 100vh;
+  width: 100vw;
+  overflow: hidden;
 }
 
 .sidebar {
@@ -66,6 +67,7 @@ button.danger:hover {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  flex-shrink: 0;
 }
 
 .sidebar h2 {
@@ -104,7 +106,6 @@ button.danger:hover {
   background-color: #b63131;
 }
 
-/* Main Content */
 .main-content {
   flex-grow: 1;
   background-color: white;
@@ -115,12 +116,6 @@ button.danger:hover {
   gap: 30px;
 }
 
-.header h1 {
-  font-size: 2rem;
-  color: #20232a;
-}
-
-/* Add Task Section */
 .todo-input-section {
   display: flex;
   flex-direction: column;
@@ -145,7 +140,6 @@ button.danger:hover {
   outline: none;
 }
 
-/* Task List */
 .task-list {
   display: flex;
   flex-direction: column;
@@ -235,7 +229,7 @@ button.danger:hover {
 }
 
 .pagination-btn:hover:not(:disabled) {
-  background-color: #2196f3; /* สีฟ้า */
+  background-color: #2196f3;
   color: white;
 }
 
@@ -255,19 +249,17 @@ button.danger:hover {
   cursor: pointer;
   padding: 0;
   margin: 1rem;
-  z-index: 1100; /* ให้ขึ้นมาด้านบน */
+  z-index: 1100;
 }
 
-/* เส้นสามขีดของ hamburger */
 .hamburger-btn .bar {
   width: 100%;
   height: 3px;
-  background-color: #333; /* หรือสีที่คุณใช้ในเมนู */
+  background-color: #333;
   border-radius: 2px;
   transition: all 0.3s ease;
 }
 
-/* เมื่อเปิดเมนู - แปลง hamburger เป็นกากบาท */
 .hamburger-btn .bar.open:nth-child(1) {
   transform: rotate(45deg) translate(5px, 5px);
 }
@@ -280,55 +272,50 @@ button.danger:hover {
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
-/* ปรับ sidebar ให้เลื่อนซ่อนได้ในจอเล็ก */
 @media (max-width: 768px) {
+  .dashboard {
+    flex-direction: column;
+  }
+
   .sidebar {
     position: fixed;
     top: 0;
     left: 0;
     height: 100vh;
-    width: 250px; /* ขนาดตามเดิม */
-    background-color: #222; /* ตาม CSS คุณ */
+    width: 250px;
+    background-color: #222;
     padding: 1rem;
-    box-sizing: border-box;
     overflow-y: auto;
     transform: translateX(-100%);
     transition: transform 0.3s ease;
     z-index: 1000;
   }
 
-  /* เมื่อเปิดเมนู ให้ sidebar เลื่อนมาโชว์ */
   .sidebar.open {
     transform: translateX(0);
   }
 
-  /* ปุ่ม hamburger แสดงในมือถือ */
   .hamburger-btn {
     display: flex;
   }
 
-  /* main-content ให้เต็มจอ ไม่มี margin ซ้าย */
   .main-content {
+    padding: 20px 16px;
     margin-left: 0 !important;
   }
 }
 
-/* ในหน้าจอใหญ่ (เกิน 768px) ให้ sidebar แสดงปกติ */
 @media (min-width: 769px) {
   .sidebar {
     position: static;
     transform: translateX(0);
   }
 
-  .main-content {
-    margin-left: 250px; /* ตามเดิม */
-  }
-
   .hamburger-btn {
     display: none;
   }
 }
-/* Login Container */
+
 .login-container {
   background: white;
   padding: 40px;
@@ -366,25 +353,6 @@ button.danger:hover {
   outline: none;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .dashboard {
-    flex-direction: column;
-  }
-
-  .sidebar {
-    width: 100%;
-    flex-direction: row;
-    justify-content: space-around;
-    padding: 12px;
-  }
-
-  .main-content {
-    padding: 20px 16px;
-  }
-}
-
-/* Animation */
 @keyframes fadeIn {
   from {
     opacity: 0;
