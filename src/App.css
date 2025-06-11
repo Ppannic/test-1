@@ -219,10 +219,9 @@ button.danger:hover {
   outline: none;
 }
 
-/* เพิ่มต่อท้าย CSS เดิมของคุณ */
 .description-snippet {
   display: -webkit-box;
-  -webkit-line-clamp: 3; /* แสดงสูงสุด 3 บรรทัด */
+  -webkit-line-clamp: 3; 
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
