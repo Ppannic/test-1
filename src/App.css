@@ -219,6 +219,35 @@ button.danger:hover {
   outline: none;
 }
 
+/* เพิ่มต่อท้าย CSS เดิมของคุณ */
+.description-snippet {
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* แสดงสูงสุด 3 บรรทัด */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  max-width: 350px;
+  line-height: 1.4;
+}
+
+.view-detail-btn {
+  background-color: #4a90e2;
+  color: white;
+  font-size: 13px;
+  padding: 4px 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-top: 4px;
+  display: inline-block;
+}
+
+.view-detail-btn:hover {
+  background-color: #357abd;
+}
+
 .pagination-btn {
   padding: 8px 14px;
   border-radius: 6px;

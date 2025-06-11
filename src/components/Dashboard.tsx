@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, NavLink, Navigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import TaskList from './TaskList';
 
 interface Task {
@@ -27,24 +28,58 @@ const Dashboard: React.FC<{ onLogout: () => void }> = ({ onLogout }) => {
 
   const addTask = () => {
     if (newTitle.trim() === '' || newDescription.trim() === '') {
-      alert('Please enter both title and description.');
+      Swal.fire({
+        icon: 'warning',
+        title: 'Please enter task title and description',
+        confirmButtonText: 'OK'
+      });
       return;
     }
+
     const task: Task = {
       id: Date.now(),
       title: newTitle.trim(),
       description: newDescription.trim(),
       completed: false,
     };
+
     setTasks([task, ...tasks]);
     setNewTitle('');
     setNewDescription('');
+
+    Swal.fire({
+      icon: 'success',
+      title: 'Task added successfully',
+      text: `"${task.title}" has been added to your task list.`,
+      timer: 2000,
+      showConfirmButton: false
+    });
   };
 
   const toggleTask = (id: number) => {
-    setTasks(tasks.map(task =>
-      task.id === id ? { ...task, completed: !task.completed } : task
-    ));
+    const task = tasks.find(t => t.id === id);
+    if (!task) return;
+
+    Swal.fire({
+      title: 'Are you sure?',
+      text: `Do you want to mark this task as ${task.completed ? 'incomplete' : 'complete'}?`,
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'Cancel',
+    }).then(result => {
+      if (result.isConfirmed) {
+        setTasks(tasks.map(t =>
+          t.id === id ? { ...t, completed: !t.completed } : t
+        ));
+        Swal.fire({
+          icon: 'success',
+          title: 'Status updated!',
+          timer: 1500,
+          showConfirmButton: false,
+        });
+      }
+    });
   };
 
   const deleteTask = (id: number) => {
@@ -61,9 +96,14 @@ const Dashboard: React.FC<{ onLogout: () => void }> = ({ onLogout }) => {
 
   const saveEdit = (id: number) => {
     if (editTitle.trim() === '' || editDescription.trim() === '') {
-      alert('Please enter both title and description.');
+      Swal.fire({
+        icon: 'warning',
+        title: 'Please enter task title and description',
+        confirmButtonText: 'OK'
+      });
       return;
     }
+
     setTasks(tasks.map(task =>
       task.id === id ? { ...task, title: editTitle.trim(), description: editDescription.trim() } : task
     ));
@@ -89,6 +129,7 @@ const Dashboard: React.FC<{ onLogout: () => void }> = ({ onLogout }) => {
     let filteredTasks: Task[];
     let page: number;
     let setPage: React.Dispatch<React.SetStateAction<number>>;
+
     if (filter === 'all') {
       filteredTasks = allTasks;
       page = pageAll;
@@ -108,6 +149,7 @@ const Dashboard: React.FC<{ onLogout: () => void }> = ({ onLogout }) => {
       setPage(1);
       page = 1;
     }
+
     const paginated = paginate(filteredTasks, page);
     return { paginated, page, totalPages, setPage };
   };
@@ -280,7 +322,7 @@ const PaginatedTaskList: React.FC<PaginatedTaskListProps> = ({
         cancelEdit={cancelEdit}
       />
 
-      <div style={{ marginTop: 20, display: 'flex', justifyContent: 'center', gap: 12  , }}>
+      <div style={{ marginTop: 20, display: 'flex', justifyContent: 'center', gap: 12 }}>
         <button 
           className="pagination-btn"
           onClick={() => setPage(page - 1)}
